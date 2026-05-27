@@ -7,6 +7,15 @@ add_library(${GAMEPLAY_ENGINE_NAME} STATIC
 
     ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/Core.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Core.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/World.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/framework/World.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/Actor.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Actor.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/Object.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Object.cpp
 )
 
 target_include_directories(${GAMEPLAY_ENGINE_NAME} PUBLIC

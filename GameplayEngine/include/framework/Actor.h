@@ -1,0 +1,31 @@
+#pragma once
+#include "framework/Core.h"
+#include "framework/Object.h"
+#include "SFML/Graphics.hpp"
+
+namespace gp{
+    class World;
+
+    class Actor : public Object{
+    public:
+        Actor(World* ownerWorld, const std::string& texturePath = "");
+        virtual ~Actor();
+
+        void BeginPlayInternal();
+        void TickInternal(float deltaTime);
+        
+        virtual void BeginPlay();
+        virtual void Tick(float deltaTime);
+        void Render(sf::RenderWindow& renderWindow);
+
+    private:
+
+        World* mOwnerWorld;
+        bool mHasBegunPlay;
+
+        shared<sf::Texture> mTexture;
+        std::optional<sf::Sprite> mSprite;
+
+        void CenterPivot();
+    };
+}

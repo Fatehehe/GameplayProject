@@ -1,9 +1,14 @@
 #include "framework/Application.h"
+#include "framework/World.h"
 
 namespace gp{
     Application::Application(unsigned int windowWidth, unsigned int windowHeight, const std::string& title, std::uint32_t style)
     : mWindow{sf::VideoMode({windowWidth, windowHeight}), title, style},
-    mTargetFrameRate{60.f}
+    mTargetFrameRate{60.f},
+    mTickClock{},
+    mCleanCycleClock{},
+    mCleanCycleInterval{2.f},
+    mCurrentWorld{nullptr}
     {
     }
 
@@ -11,7 +16,7 @@ namespace gp{
 
     void Application::Run()
     {
-        mClock.restart();
+        mTickClock.restart();
 
         float accumulatedTime = 0.f;
         float targetDeltaTime = 1.f/ mTargetFrameRate;
@@ -24,7 +29,7 @@ namespace gp{
                     mWindow.close();
             }
 
-            float frameRateDeltaTime = mClock.restart().asSeconds();
+            float frameRateDeltaTime = mTickClock.restart().asSeconds();
             accumulatedTime += frameRateDeltaTime;
 
             while(accumulatedTime >= targetDeltaTime){
@@ -47,7 +52,10 @@ namespace gp{
 
     void Application::TickInternal(float deltaTime){
         Tick(deltaTime);
-        LOG("Delta Time: %f", deltaTime);
+        if(mCurrentWorld){
+            mCurrentWorld->BeginPlayInternal();
+            mCurrentWorld->TickInternal(deltaTime);
+        }
     }
 
     void Application::Tick(float deltaTime){
