@@ -1,6 +1,9 @@
-#include <iostream>
+#include <EntryPoint.h>
+#include "framework/Application.h"
 
 int main(){
-    std::cout << "Hello World!" << std::endl;
+    gp::Application* app = gp::GetApplication();
+    app->Run();
+    delete app;
     return 0;
 }

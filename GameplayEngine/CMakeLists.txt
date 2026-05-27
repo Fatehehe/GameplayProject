@@ -3,6 +3,9 @@ add_library(${GAMEPLAY_ENGINE_NAME} STATIC
 
     ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/Application.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Application.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/Core.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Core.cpp
 )
 
 target_include_directories(${GAMEPLAY_ENGINE_NAME} PUBLIC
