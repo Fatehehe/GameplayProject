@@ -1,4 +1,5 @@
 add_library(${GAMEPLAY_ENGINE_NAME} STATIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/EntryPoint.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/EntryPoint.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/Application.h

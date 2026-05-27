@@ -11,6 +11,8 @@ namespace gp{
 
     void Application::Run()
     {
+        mClock.restart();
+
         float accumulatedTime = 0.f;
         float targetDeltaTime = 1.f/ mTargetFrameRate;
 
@@ -21,6 +23,34 @@ namespace gp{
                 if (event->is<sf::Event::Closed>())
                     mWindow.close();
             }
+
+            float frameRateDeltaTime = mClock.restart().asSeconds();
+            accumulatedTime += frameRateDeltaTime;
+
+            while(accumulatedTime >= targetDeltaTime){
+                accumulatedTime -= targetDeltaTime;
+                TickInternal(targetDeltaTime);
+                RenderInternal();
+            }
         }
+    }
+
+    void Application::RenderInternal(){
+        mWindow.clear();
+        Render(mWindow);
+        mWindow.display();
+    }
+
+    void Application::Render(sf::RenderWindow& window){
+
+    }
+
+    void Application::TickInternal(float deltaTime){
+        Tick(deltaTime);
+        LOG("Delta Time: %f", deltaTime);
+    }
+
+    void Application::Tick(float deltaTime){
+
     }
 }

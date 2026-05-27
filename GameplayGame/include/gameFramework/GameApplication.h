@@ -5,6 +5,9 @@ namespace gp{
     class GameApplication : public Application{
         public:
             GameApplication();
-            ~GameApplication();
+            virtual ~GameApplication();
+
+            virtual void Render(sf::RenderWindow& window) override;
+            virtual void Tick(float deltaTime) override;
     };
 }

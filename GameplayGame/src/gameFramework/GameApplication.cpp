@@ -10,4 +10,14 @@ namespace gp{
     {
 
     }
+
+    GameApplication::~GameApplication(){}
+
+    void GameApplication::Render(sf::RenderWindow& window){
+        Application::Render(window);
+    }
+
+    void GameApplication::Tick(float deltaTime){
+        Application::Tick(deltaTime);
+    }
 }
