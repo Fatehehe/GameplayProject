@@ -47,7 +47,9 @@ namespace gp{
     }
 
     void Application::Render(sf::RenderWindow& window){
-
+        if(mCurrentWorld){
+            mCurrentWorld->Render(window);
+        }
     }
 
     void Application::TickInternal(float deltaTime){

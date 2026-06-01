@@ -6,11 +6,12 @@ namespace gp{
     class AssetManager{
     protected:
         AssetManager();
+
     public:
         static AssetManager& Get();
         shared<sf::Texture> LoadTexture(const std::string& texturePath);
         void CleanCycle();
-        void SetAssetRootDirectory(const std::string& dir);
+        void SetAssetRootDirectory(const std::string& directory);
 
     private:
         static unique<AssetManager> assetManager;

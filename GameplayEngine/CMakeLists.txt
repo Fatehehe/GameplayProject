@@ -16,6 +16,12 @@ add_library(${GAMEPLAY_ENGINE_NAME} STATIC
 
     ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/Object.h
     ${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Object.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/AssetManager.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/framework/AssetManager.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/Animation.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/framework/Animation.cpp
 )
 
 target_include_directories(${GAMEPLAY_ENGINE_NAME} PUBLIC

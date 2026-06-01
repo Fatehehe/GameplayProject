@@ -1,10 +1,11 @@
 #include "framework/AssetManager.h"
 
 namespace gp{
-    AssetManager::AssetManager()
-    : mLoadedTextureMap {},
+    AssetManager::AssetManager() : 
+    mLoadedTextureMap{},
     mRootDirectory{}
-    {}
+    {
+    }
 
     unique<AssetManager> AssetManager::assetManager{nullptr};
 
@@ -24,10 +25,12 @@ namespace gp{
         shared<sf::Texture> newTexture = std::make_shared<sf::Texture>();
         if(newTexture->loadFromFile(mRootDirectory + texturePath)){
             mLoadedTextureMap.insert({texturePath, newTexture});
+            std::string path = mRootDirectory + texturePath;
+            LOG("Get the texture: %s", path.c_str());
             return newTexture;
         }
 
-        return shared<sf::Texture>{nullptr}; 
+        return shared<sf::Texture>{nullptr};
     }
 
     void AssetManager::CleanCycle(){
@@ -36,7 +39,7 @@ namespace gp{
                 LOG("Cleaning up texture: %s", iter->first.c_str());
                 iter = mLoadedTextureMap.erase(iter);
             }else{
-                iter++;
+                ++iter;
             }
         }
     }
